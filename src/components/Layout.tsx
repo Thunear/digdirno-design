@@ -14,7 +14,7 @@ export default function Layout() {
             Om oss
           </Link>
           <Link to="/how-we-design" className="nav-link">
-            Slik designar me
+            Slik designar vi
           </Link>
         </nav>
       </header>

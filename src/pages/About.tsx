@@ -21,7 +21,7 @@ export default function About() {
     <div className="page">
       <h1>Om oss</h1>
       <p className="page-intro">
-        Me jobbar i digdir.no teamet og har ansvar for designet på nettsida. Me
+        Vi jobbar i digdir.no teamet og har ansvar for designet på nettsida. Vi
         er opptekne av å lage gode og inkluderende digitale opplevelsar for alle
         som besøker digdir.no. Her kan du bli litt bedre kjent med oss og kva
         som driver oss i arbeidet vårt.

@@ -14,9 +14,9 @@ export default function Home() {
             <span className="hero-highlight">digdir.no</span>
           </h1>
           <p>
-            Her deler me tankane bak endringane me gjer på{" "}
+            Her deler vi tankane bak endringane me gjer på{" "}
             <span className="hero-highlight">digdir.no</span>. Kvifor ting ser
-            ut som dei gjer, kva me har endra og kva som kjem. Følg med og sjå
+            ut som dei gjer, kva vi har endra og kva som kjem. Følg med og sjå
             korleis nettstaden utviklar seg.
           </p>
         </div>
