@@ -14,7 +14,7 @@ export default function Home() {
             <span className="hero-highlight">digdir.no</span>
           </h1>
           <p>
-            Her deler vi tankane bak endringane me gjer på{" "}
+            Her deler vi tankane bak endringane vi gjer på{" "}
             <span className="hero-highlight">digdir.no</span>. Kvifor ting ser
             ut som dei gjer, kva vi har endra og kva som kjem. Følg med og sjå
             korleis nettstaden utviklar seg.
@@ -23,11 +23,7 @@ export default function Home() {
         <div className="hero-visual">
           <div className="hero-image-wrapper">
             <img src="/images/hero-image.png" alt="Designarbeidsområde" />
-            <div className="hero-image-overlay" />
           </div>
-          <div className="hero-blob hero-blob-1" />
-          <div className="hero-blob hero-blob-2" />
-          <div className="hero-dots" />
         </div>
       </section>
 

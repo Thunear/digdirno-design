@@ -121,12 +121,9 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 420px;
+  max-width: 520px;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.12),
-    0 0 0 1px rgba(0, 0, 0, 0.04);
   transform: rotate(2deg);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -140,66 +137,6 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
-}
-
-.hero-image-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(220, 38, 38, 0.08) 0%,
-    transparent 60%
-  );
-  pointer-events: none;
-}
-
-/* Decorative blobs */
-.hero-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.5;
-  pointer-events: none;
-  animation: blobFloat 8s ease-in-out infinite alternate;
-}
-
-.hero-blob-1 {
-  width: 260px;
-  height: 260px;
-  background: radial-gradient(circle, #dc262630 0%, transparent 70%);
-  top: -40px;
-  right: -20px;
-}
-
-.hero-blob-2 {
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, #6366f130 0%, transparent 70%);
-  bottom: -30px;
-  left: -10px;
-  animation-delay: -4s;
-}
-
-@keyframes blobFloat {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  100% {
-    transform: translate(12px, -16px) scale(1.08);
-  }
-}
-
-/* Decorative dots grid */
-.hero-dots {
-  position: absolute;
-  z-index: 1;
-  bottom: 10px;
-  right: -10px;
-  width: 100px;
-  height: 100px;
-  background-image: radial-gradient(circle, #cbd5e1 1.2px, transparent 1.2px);
-  background-size: 14px 14px;
-  opacity: 0.5;
 }
 
 /* ── Posts Section ────────────────────────────────────────── */
