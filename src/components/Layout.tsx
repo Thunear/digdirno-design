@@ -6,7 +6,7 @@ export default function Layout() {
     <div className="layout">
       <header className="header">
         <Link to="/" className="logo">
-          <img src="/images/logo.png" alt="" width="36" height="36" />
+          <img src="/images/logo.png" alt="" width="40" height="40" />
           <span className="logo-text">Design bloggen</span>
         </Link>
         <nav className="nav">
