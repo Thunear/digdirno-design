@@ -310,7 +310,7 @@ export default function HowWeDesign() {
             style={
               {
                 "--step-color": step.color,
-                "--step-text-color": step.textColor || "#1e293b",
+                "--step-text-color": "#1e293b",
               } as React.CSSProperties
             }
           >
