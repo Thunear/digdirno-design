@@ -1,35 +1,48 @@
 ---
 title: "Justeringar på arrangementsidene etter brukartesting"
-description: "Etter å ha gjennomført brukartesting på arrangementsidene, har vi identifisert flere områder for forbedring. I dette innlegget deler vi de viktigste justeringene vi har gjort for å forbedre brukeropplevelsen."
+description: "Etter å ha gjennomført brukartesting på arrangementsidene, har vi identifisert fleire områder for forbedring. I dette innlegget deler vi dei viktigaste justeringane vi har gjort for å forbedre brukaropplevelsen."
 image: "/images/posts/kurs-bilde.png"
 date: "2026-02-20"
 slug: "justeringar-paa-arrangementmal-2026-02"
 ---
 
-Design systems are more than a component library — they're a shared language between designers and developers.
+import UserFeedback from "../components/UserFeedback";
 
-## Why We Built One
+Me gjennomførte brukartesting på arrangementsidene og fekk verdifulle tilbakemeldingar. Her er dei viktigaste justeringane me har gjort.
 
-As our product portfolio grew, inconsistencies crept in. Buttons looked different across apps, spacing was unpredictable, and onboarding new team members took longer than it should.
+## 1. Knappaene for filtrering var for lik "Påmelding" knappen i farge og utforming
 
-We needed a single source of truth.
+<UserFeedback>
+  "Knappen for filtrering “Vis alle” er blå og ser lik ut som “Påmelding”
+  knappen"
+</UserFeedback>
 
-## Our Approach
+<UserFeedback>
+  "Ikke intuitivt med fargevalg på knappene på sidene. Så ut som allerede var
+  valgt knapp slik som under."
+</UserFeedback>
 
-We started small: **color tokens, typography, and spacing**. Instead of trying to build everything at once, we focused on the primitives that every component depends on.
+Fyll ut kva de gjorde for å løyse dette.
 
-### Key decisions:
+## 2. Forventa å finne påmeldingsknappen i botn av programsida
 
-- **Token-first architecture** — every visual property references a design token
-- **Composition over configuration** — small, composable components beat monolithic ones
-- **Documentation as a feature** — if it isn't documented, it doesn't exist
+<UserFeedback>
+  «Finner arr. oversikt og så riktig side, ser på programmet – ser etter
+  påmeldingsknapp i bunnen av programsiden. Der finner hun ingen ting – så ser
+  hun.»
+</UserFeedback>
 
-## Lessons Learned
+## 3. Forventa å kunne filtrere på dag 1 og dag 2 i programmet
 
-1. Get buy-in early from both design and engineering leadership
-2. Automate as much as possible — linting, visual regression tests, publishing
-3. Treat the design system as a product with its own roadmap
+<UserFeedback>
+  "Burde det stå dag 1 og dag to eller dato på knappene for filtrering?"
+</UserFeedback>
 
-> "A design system is a living product — it needs care, feeding, and the occasional refactor."
+## 4. Gi bedre oversikt over programmet
 
-The journey is ongoing, but the investment has already paid dividends in consistency, speed, and team happiness.
+<UserFeedback>
+  "Sammendrag – uten så mye tekst – ønsket en boks på siden med komplett
+  oversikt og hovedtidspunkter."
+</UserFeedback>
+
+<UserFeedback>"Smørbrødliste med oversikt over hva som finnes."</UserFeedback>

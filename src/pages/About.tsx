@@ -3,16 +3,16 @@ import "../styles/about.css";
 
 const team = [
   {
-    name: "Øyvind",
-    title: "Tittel her",
+    name: "Øyvind Thune",
+    title: "Design Lead",
     image: "/images/authors/user1.png",
-    ingress: "Fyll ut ingress her.",
+    ingress: "Meir informasjon vil komme her.",
   },
   {
-    name: "Vilde",
-    title: "Tittel her",
+    name: "Vilde Ylvisåker",
+    title: "Grafisk Designer",
     image: "/images/authors/user2.png",
-    ingress: "Fyll ut ingress her.",
+    ingress: "Meir informasjon vil komme her.",
   },
 ];
 
@@ -21,8 +21,10 @@ export default function About() {
     <div className="page">
       <h1>Om oss</h1>
       <p className="page-intro">
-        Me er designteamet i Digitaliseringsdirektoratet. Her deler me innsikt,
-        prosessar og avgjerder bak designarbeidet på digdir.no.
+        Me jobbar i digdir.no teamet og har ansvar for designet på nettsida. Me
+        er opptekne av å lage gode og inkluderende digitale opplevelsar for alle
+        som besøker digdir.no. Her kan du bli litt bedre kjent med oss og kva
+        som driver oss i arbeidet vårt.
       </p>
 
       <section className="team-section">

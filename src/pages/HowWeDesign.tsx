@@ -44,17 +44,6 @@ export default function HowWeDesign() {
           den verkelege verda.
         </p>
       </section>
-
-      <section className="page-section">
-        <h2>Prinsippa våre</h2>
-        <ul className="principles-list">
-          <li>Design med menneske, ikkje for dei</li>
-          <li>Tilgjenge er ikkje til forhandling</li>
-          <li>Enkelheit framfor kompleksitet</li>
-          <li>Konsistens på tvers av flater</li>
-          <li>Vis, ikkje fortel — prototyp ustoppeleg</li>
-        </ul>
-      </section>
     </div>
   );
 }
