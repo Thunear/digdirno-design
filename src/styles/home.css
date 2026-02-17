@@ -124,12 +124,6 @@
   max-width: 520px;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transform: rotate(2deg);
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero-image-wrapper:hover {
-  transform: rotate(0deg) scale(1.02);
 }
 
 .hero-image-wrapper img {
