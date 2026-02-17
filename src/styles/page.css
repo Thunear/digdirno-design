@@ -4,6 +4,21 @@
   padding: var(--spacing-2xl) 0;
 }
 
+.page-breadcrumb {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-md);
+}
+
+.page-breadcrumb a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+}
+
+.page-breadcrumb a:hover {
+  color: var(--color-text);
+}
+
 .page h1 {
   font-size: 2.25rem;
   letter-spacing: -0.02em;

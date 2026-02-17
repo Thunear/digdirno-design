@@ -1,0 +1,70 @@
+.github-workflow-page .board-flow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  max-width: 600px;
+}
+
+.board-column {
+  border-radius: 8px;
+  padding: var(--spacing-md);
+}
+
+.board-column-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-xs);
+  margin-bottom: 4px;
+}
+
+.board-column-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.board-column-limit {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #6b7280);
+  white-space: nowrap;
+}
+
+.board-column-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary, #555);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.github-link {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--color-link, #1e40af);
+  text-decoration: none;
+}
+
+.github-link:hover {
+  text-decoration: underline;
+}
+
+.github-list {
+  padding-left: 1.2rem;
+  line-height: 1.8;
+}
+
+.github-list li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.github-steps {
+  padding-left: 1.2rem;
+  line-height: 1.8;
+}
+
+.github-steps li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.github-steps li strong {
+  font-weight: 600;
+}
