@@ -1,19 +1,26 @@
+import { useEffect, useState } from "react";
 import "../styles/page.css";
 import "../styles/github-workflow.css";
+
+const tocItems = [
+  { id: "flyten", label: "Flyten i boardet" },
+  { id: "prioritering", label: "Prioritering av epics" },
+  { id: "finn-oss", label: "Finn oss på GitHub" },
+];
 
 const columns = [
   {
     name: "Innboks",
     color: "#93c5fd",
     description:
-      "Hit kjem alle nye behov, idéar og forbetringsforslag. Kven som helst i organisasjonen kan melde inn eit behov.",
+      "Hit kjem alle nye behov, idéar og forbetringsforslag. Kven som helst kan melde inn ting her, og det er her vi startar vurderingsprosessen vår. Om ei oppgåve blir vurdert som relevant og viktig, flyttar vi den vidare til backlog. Om ikkje, lukkar vi den med ei grunngjeving.",
     limit: null,
   },
   {
     name: "Backlog",
     color: "#a5b4fc",
     description:
-      "Behov vi har vurdert som relevante, men som ikkje er prioriterte til arbeid enno.",
+      "Behov vi har vurdert som relevante, men som ikkje er prioriterte til arbeid enno havnar i backlog.",
     limit: null,
   },
   {
@@ -46,9 +53,16 @@ const columns = [
   },
   {
     name: "Tested OK",
-    color: "#6ee7b7",
+    color: "#34d399",
     description:
       "Oppgåver som er testa og godkjende. Klare for utrulling til produksjon.",
+    limit: null,
+  },
+  {
+    name: "Evalutate",
+    color: "#a78bfa",
+    description:
+      "Oppgåver som er rulla ut i produksjon, og som vi evaluerer effekten av. Vi ser på om behovet er løyst, og om det har skapt positive endringar for brukarane våre.",
     limit: null,
   },
   {
@@ -60,138 +74,336 @@ const columns = [
 ];
 
 export default function GitHubWorkflow() {
+  const [activeId, setActiveId] = useState<string>("");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        }
+      },
+      { rootMargin: "-80px 0px -60% 0px", threshold: 0 },
+    );
+
+    tocItems.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="page github-workflow-page">
-      <h1>Slik jobbar vi i GitHub</h1>
-      <p className="page-intro">
-        Vi brukar eit{" "}
-        <a
-          href="https://github.com/orgs/digdir/projects/49"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub Board
-        </a>{" "}
-        for å organisere og prioritere arbeidet vårt. Boardet gir oss oversikt
-        over kva som skjer, kva som er prioritert og kva som ventar. Her
-        forklarar vi korleis flyten fungerer og korleis du kan melde inn behov.
-      </p>
-
-      {/* Board visualization */}
-      <section className="page-section">
-        <h2>Flyten i boardet</h2>
-        <p>
-          Oppgåver flyttar seg frå venstre mot høgre gjennom boardet etter kvart
-          som dei blir vurderte, jobba med, testa og ferdigstilte. Vi set
-          grenser for kor mange oppgåver som kan vere i kvar kolonne samstundes,
-          slik at vi ikkje tek på oss for mykje på ein gong.
-        </p>
-
-        <div className="board-flow">
-          {columns.map((col) => (
-            <div
-              key={col.name}
-              className="board-column"
-              style={{ backgroundColor: col.color + "30" }}
-            >
-              <div className="board-column-header">
-                <span className="board-column-name">{col.name}</span>
-                {col.limit && (
-                  <span className="board-column-limit">maks {col.limit}</span>
-                )}
-              </div>
-              <p className="board-column-desc">{col.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* How to submit */}
-      <section className="page-section">
-        <h2>Melde inn behov</h2>
-        <p>
-          Har du eit behov, ein idé eller eit forbetringsforslag? Meld det inn
-          som eit issue, så hamnar det i innboksen vår. Beskriv behovet så
-          tydeleg som mogleg — kva er problemet, kven er påverka, og kvifor er
-          det viktig?
-        </p>
-        <p>
-          <a
-            href="https://github.com/digdir/digdir.no/issues/new/choose"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="github-link"
-          >
-            Meld inn eit behov på GitHub →
-          </a>
-        </p>
-      </section>
-
-      {/* Capacity limits explained */}
-      <section className="page-section">
-        <h2>Kvifor set vi grenser?</h2>
-        <p>
-          Vi avgrensar kor mange oppgåver som kan vere i kvar kolonne
-          samstundes. Dette hjelper oss å:
-        </p>
-        <ul className="github-list">
-          <li>Halde fokus på dei viktigaste oppgåvene</li>
-          <li>Fullføre det vi har starta før vi tek på oss noko nytt</li>
-          <li>Redusere konteksbytte og auke kvaliteten</li>
-          <li>Gjere det enklare å sjå flaskehalsar i prosessen</li>
-        </ul>
-      </section>
-
-      {/* From inbox to done */}
-      <section className="page-section">
-        <h2>Frå innboks til ferdig</h2>
-        <ol className="github-steps">
-          <li>
-            <strong>Innboks:</strong> Nokon melder inn eit behov eller ein idé.
-          </li>
-          <li>
-            <strong>Vurdering:</strong> Vi vurderer om behovet er relevant. Viss
-            ja, flyttar vi det til backlog. Viss ikkje, lukkar vi det med ei
-            grunngjeving.
-          </li>
-          <li>
-            <strong>Epic:</strong> Relaterte oppgåver blir samla under ein epic.
-            Vi held maks 4 aktive epics.
-          </li>
-          <li>
-            <strong>Todo:</strong> Oppgåver frå aktive epics blir flytta til
-            Todo når dei skal jobbast med (maks 10).
-          </li>
-          <li>
-            <strong>In Progress:</strong> Nokon tek oppgåva og jobbar med ho
-            (maks 5 samtidige).
-          </li>
-          <li>
-            <strong>Ready for Review:</strong> Oppgåva er klar for test og
-            gjennomgang.
-          </li>
-          <li>
-            <strong>Tested OK:</strong> Oppgåva er testa og godkjend.
-          </li>
-          <li>
-            <strong>Done:</strong> Oppgåva er rulla ut i produksjon.
-          </li>
-        </ol>
-      </section>
-
-      <section className="page-section">
-        <h2>Finn oss på GitHub</h2>
-        <p>
+    <div className="page github-workflow-page page-with-toc">
+      <div className="page-main-content">
+        <h1>Slik jobbar vi i GitHub</h1>
+        <p className="page-intro">
+          Vi brukar eit{" "}
           <a
             href="https://github.com/orgs/digdir/projects/49"
             target="_blank"
             rel="noopener noreferrer"
-            className="github-link"
           >
-            Sjå boardet vårt på GitHub →
-          </a>
+            GitHub Board
+          </a>{" "}
+          for å organisere og prioritere arbeidet vårt. Boardet gir oss oversikt
+          over kva som skjer, kva som er prioritert og kva som ventar. Her
+          forklarar vi korleis flyten fungerer og korleis du kan melde inn
+          behov.
         </p>
-      </section>
+
+        {/* CTA box */}
+        <div className="github-cta-box">
+          <div className="github-cta-icon">
+            <svg
+              viewBox="0 0 24 24"
+              width="32"
+              height="32"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+          </div>
+          <div className="github-cta-content">
+            <p className="github-cta-heading">
+              Har du eit behov, ein idé eller funne ein feil?
+            </p>
+            <p className="github-cta-desc">
+              Meld det inn som eit issue i innboksen vår — enten det gjeld nye behov, forbetringsforslag eller bugs.
+            </p>
+          </div>
+          <a
+            href="https://github.com/digdir/digdir.no/issues/new/choose"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="github-cta-button"
+          >
+            Meld inn behov →
+          </a>
+        </div>
+
+        {/* Board visualization */}
+        <section className="page-section">
+          <h2 id="flyten">Flyten i boardet</h2>
+          <p>
+            Oppgåver flyttar seg frå venstre mot høgre gjennom boardet etter
+            kvart som dei blir vurderte, jobba med, testa og ferdigstilte. Vi
+            set grenser for kor mange oppgåver som kan vere i kvar kolonne
+            samtidig, slik at vi ikkje tek på oss for mykje på ein gong.
+          </p>
+
+          <div className="board-flow">
+            {columns.map((col) => (
+              <div
+                key={col.name}
+                className="board-column"
+                style={{ backgroundColor: col.color + "30" }}
+              >
+                <div className="board-column-header">
+                  <span className="board-column-name">{col.name}</span>
+                </div>
+                <p className="board-column-desc">{col.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Prioritering av epics */}
+        <section className="page-section">
+          <h2 id="prioritering">Korleis vi vurderer og prioriterer epics</h2>
+          <p>
+            For å sikre at vi jobbar med det som gir mest verdi, vurderer vi
+            alle epics etter fire kriterium. Kvart kriterium får ein score frå 1
+            til 5. Rangeringa blir brukt som beslutningsstøtte — ikkje som ein
+            absolutt fasit. Fagleg skjønn og eksterne føringar kan også påverke
+            prioriteringa.
+          </p>
+
+          <div className="criteria-grid">
+            <div className="criteria-card">
+              <div className="criteria-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+              </div>
+              <div className="criteria-body">
+                <h3>Brukarverdi</h3>
+                <p className="criteria-question">
+                  Kor stor verdi skapar denne epicen for kjernebrukarane våre?
+                </p>
+                <p>
+                  Vurder i kva grad epicen løyser eit viktig problem, forbetrar
+                  brukaren sin arbeidskvardag eller gir merkbar effekt for mange
+                  brukarar.
+                </p>
+              </div>
+            </div>
+
+            <div className="criteria-card">
+              <div className="criteria-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+              </div>
+              <div className="criteria-body">
+                <h3>Målbidrag</h3>
+                <p className="criteria-question">
+                  Kor tydeleg bidreg epicen til å nå OKR og strategiske mål?
+                </p>
+                <p>
+                  Vurder om epicen har direkte kopling til eitt eller fleire
+                  Objectives, og om ho bidreg til målbar framgang.
+                </p>
+              </div>
+            </div>
+
+            <div className="criteria-card">
+              <div className="criteria-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+              </div>
+              <div className="criteria-body">
+                <h3>Konsekvens ved å la vere</h3>
+                <p className="criteria-question">
+                  Kva skjer dersom vi ikkje gjennomfører denne epicen no?
+                </p>
+                <p>
+                  Vurder risiko, negativ påverknad på brukarar, teknisk gjeld,
+                  omdøme eller eksterne forpliktingar dersom arbeidet blir
+                  utsett.
+                </p>
+              </div>
+            </div>
+
+            <div className="criteria-card">
+              <div className="criteria-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <div className="criteria-body">
+                <h3>Innsats</h3>
+                <p className="criteria-question">
+                  Kor krevjande er epicen å gjennomføre?
+                </p>
+                <p>
+                  Vurder omfang, kompleksitet, avhengigheiter og ressursbruk.
+                  Høg score betyr høg gjennomføringsinnsats.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 className="subsection-heading">Skala 1–5</h3>
+          <div className="scale-list">
+            <div className="scale-item">
+              <span className="scale-badge scale-5">5</span>
+              <div>
+                <strong>Kritisk satsing</strong>
+                <p>
+                  Ei avgjerande forbetring som gir stor og målbar effekt, har
+                  sterk kopling til mål og høg konsekvens om ho ikkje blir
+                  gjennomført.
+                </p>
+              </div>
+            </div>
+            <div className="scale-item">
+              <span className="scale-badge scale-4">4</span>
+              <div>
+                <strong>Svært viktig</strong>
+                <p>
+                  Gir betydeleg forbetring og støttar måla tydeleg, men er ikkje
+                  akutt kritisk.
+                </p>
+              </div>
+            </div>
+            <div className="scale-item">
+              <span className="scale-badge scale-3">3</span>
+              <div>
+                <strong>Viktig</strong>
+                <p>
+                  Gir tydeleg, men moderat forbetring og kan planleggjast utan
+                  store konsekvensar.
+                </p>
+              </div>
+            </div>
+            <div className="scale-item">
+              <span className="scale-badge scale-2">2</span>
+              <div>
+                <strong>Mindre viktig</strong>
+                <p>Har avgrensa effekt eller låg strategisk betydning no.</p>
+              </div>
+            </div>
+            <div className="scale-item">
+              <span className="scale-badge scale-1">1</span>
+              <div>
+                <strong>Låg prioritet</strong>
+                <p>Har liten effekt og kan trygt utsetjast.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 className="subsection-heading">
+            Beregning av prioriteringsscore
+          </h3>
+          <div className="formula-box">
+            <code className="formula">
+              (Brukarverdi + Målbidrag + Konsekvens) – Innsats
+            </code>
+            <p>
+              Formelen balanserer effekt mot gjennomføringskostnad, utan at
+              store og viktige satsingar automatisk blir straffa for høg
+              innsats. Scoren blir brukt til å rangere epics relativt mot
+              kvarandre.
+            </p>
+          </div>
+
+          <div className="note-box">
+            <strong>Viktige presiseringar</strong>
+            <ul>
+              <li>5 skal brukast sjeldan.</li>
+              <li>3 skal vere normalt nivå.</li>
+              <li>
+                Scoren er eit diskusjonsverktøy, ikkje ein automatisk
+                beslutning.
+              </li>
+              <li>
+                Eksterne krav eller kritiske feil kan prioriterast utanfor
+                modellen.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <aside className="toc-sidebar">
+        <nav className="toc-nav">
+          <h3 className="toc-title">Innhald på sida</h3>
+          <ul className="toc-list">
+            {tocItems.map(({ id, label }) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  className={`toc-link${activeId === id ? " toc-link--active" : ""}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document
+                      .getElementById(id)
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
     </div>
   );
 }

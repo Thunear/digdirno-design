@@ -292,7 +292,7 @@ export default function HowWeDesign() {
   return (
     <div className="page process-page">
       <p className="page-breadcrumb">
-        <Link to="/designfundament">Designfundament</Link> / Utviklingsprosess
+        <Link to="/designfundament">Nettsidehåndboka</Link> / Utviklingsprosess
       </p>
       <h1>Utviklingsprosess</h1>
       <p className="page-intro">

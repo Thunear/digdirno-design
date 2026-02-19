@@ -1,7 +1,22 @@
+/* About page grid with TOC */
+.about-page.page-with-toc {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 0 var(--spacing-2xl);
+  align-items: start;
+  max-width: calc(var(--content-width) + 240px + var(--spacing-2xl));
+}
+
+.about-page .page-main-content {
+  min-width: 0;
+}
+
+/* Team section */
 .team-section {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
 }
 
 .team-card {
@@ -40,6 +55,49 @@
   margin-top: var(--spacing-sm);
   color: var(--color-text-muted);
   line-height: 1.7;
+}
+
+/* Sites grid */
+.sites-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.site-card {
+  padding: var(--spacing-md);
+  background: var(--color-accent-bg, #f8f9fb);
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.site-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: var(--color-text, #111);
+}
+
+.site-card p {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted, #555);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .about-page.page-with-toc {
+    grid-template-columns: 1fr;
+  }
+
+  .about-page .toc-sidebar {
+    display: none;
+  }
+
+  .sites-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {

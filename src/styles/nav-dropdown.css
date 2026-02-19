@@ -5,11 +5,16 @@
 .nav-dropdown-trigger {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   background: none;
   border: none;
   cursor: pointer;
   font-family: inherit;
+}
+
+.nav-dropdown-icon {
+  display: flex;
+  align-items: center;
 }
 
 .nav-dropdown-chevron {

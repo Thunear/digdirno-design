@@ -10,14 +10,20 @@ export default function Home() {
       <section className="hero">
         <div className="hero-content">
           <h1>
-            Velkomen til designbloggen for{" "}
-            <span className="hero-highlight">digdir.no</span>
+            Velkommen til sida for{" "}
+            <span className="hero-highlight">digdir.no</span>-teamet
           </h1>
           <p>
-            Her deler vi tankane bak endringane vi gjer på{" "}
-            <span className="hero-highlight">digdir.no</span>. Kvifor ting ser
-            ut som dei gjer, kva vi har endra og kva som kjem. Følg med og sjå
-            korleis nettstaden utviklar seg.
+            Her deler vi korleis vi jobbar med{" "}
+            <span className="hero-highlight">digdir.no</span>,{" "}
+            <span className="hero-highlight" style={{ color: "#95227D" }}>
+              uutilsynet.no
+            </span>{" "}
+            og{" "}
+            <span className="hero-highlight" style={{ color: "#252525" }}>
+              samarbeid.digdir.no
+            </span>
+            . Kva vi endrar, kvifor vi gjer det og kva som kjem.
           </p>
         </div>
         <div className="hero-visual">

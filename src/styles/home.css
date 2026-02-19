@@ -55,7 +55,8 @@
   bottom: 2px;
   width: 100%;
   height: 6px;
-  background: #dc262620;
+  background: currentColor;
+  opacity: 0.125;
   border-radius: 4px;
   z-index: -1;
 }

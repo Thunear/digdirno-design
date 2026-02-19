@@ -24,7 +24,7 @@ export default function DesignFoundationPage() {
       <div className="page">
         <h1>Sida finst ikkje</h1>
         <p>
-          <Link to="/designfundament">← Tilbake til Designfundamentet</Link>
+          <Link to="/designfundament">← Tilbake til Nettsidehåndboka</Link>
         </p>
       </div>
     );
@@ -33,7 +33,7 @@ export default function DesignFoundationPage() {
   return (
     <div className="page">
       <p className="page-breadcrumb">
-        <Link to="/designfundament">Designfundament</Link> / {title}
+        <Link to="/designfundament">Nettsidehåndboka</Link> / {title}
       </p>
       <h1>{title}</h1>
       <p className="page-intro">

@@ -36,11 +36,32 @@ export default function Layout() {
     <div className="layout">
       <header className="header">
         <Link to="/" className="logo">
-          <img src="/images/logo.png" alt="" width="40" height="40" />
-          <span className="logo-text">Design bloggen</span>
+          <img src="/images/logo.png" alt="" width="36" height="36" />
+          <span className="logo-text">
+            <span className="logo-primary">digdir.no</span>
+            <span className="logo-secondary">teamet</span>
+          </span>
         </Link>
         <nav className="nav">
-          <NavDropdown label="Designfundament" items={designfundamentItems} />
+          <NavDropdown
+            label="Nettsidehåndboka"
+            items={designfundamentItems}
+            icon={
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+            }
+          />
           <Link to="/arbeidsflyt" className="nav-link">
             Arbeidsflyt i GitHub
           </Link>
@@ -54,7 +75,7 @@ export default function Layout() {
       </main>
       <footer className="footer">
         <p>
-          &copy; {new Date().getFullYear()} Design bloggen. Laga av Vilde og
+          &copy; {new Date().getFullYear()} digdir.no-teamet. Laga av Vilde og
           Øyvind.
         </p>
       </footer>

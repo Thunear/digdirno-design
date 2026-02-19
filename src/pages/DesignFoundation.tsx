@@ -29,11 +29,11 @@ const sections = [
 export default function DesignFoundation() {
   return (
     <div className="page">
-      <h1>Designfundament</h1>
+      <h1>Nettsidehåndboka</h1>
       <p className="page-intro">
-        Designfundamentet samlar prinsippa, prosessane og retningslinjene vi
-        byggjer arbeidet vårt på. Det gir oss eit felles grunnlag for å ta gode
-        designval og sikrar at vi jobbar konsistent og målretta.
+        Nettsidehåndboka samlar prinsippa, prosessane og retningslinjene vi
+        byggjer arbeidet vårt på. Ho gir eit felles grunnlag for alle som jobbar
+        med nettsidene våre — uavhengig av fagfelt.
       </p>
 
       <div className="df-grid">

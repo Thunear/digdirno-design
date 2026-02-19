@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import type React from "react";
 import { Link } from "react-router-dom";
 import "../styles/nav-dropdown.css";
 
@@ -11,9 +12,10 @@ interface DropdownItem {
 interface NavDropdownProps {
   label: string;
   items: DropdownItem[];
+  icon?: React.ReactNode;
 }
 
-export default function NavDropdown({ label, items }: NavDropdownProps) {
+export default function NavDropdown({ label, items, icon }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -35,6 +37,7 @@ export default function NavDropdown({ label, items }: NavDropdownProps) {
         aria-expanded={open}
         aria-haspopup="true"
       >
+        {icon && <span className="nav-dropdown-icon">{icon}</span>}
         {label}
         <svg
           className={`nav-dropdown-chevron ${open ? "nav-dropdown-chevron--open" : ""}`}
