@@ -41,6 +41,11 @@
   color: var(--color-text);
 }
 
+.page-section h3 {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+}
+
 .page-section p {
   color: var(--color-text-muted);
   line-height: 1.8;

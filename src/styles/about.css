@@ -13,21 +13,21 @@
 
 /* Team section */
 .team-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xl);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
   margin-top: var(--spacing-lg);
 }
 
 .team-card {
   display: flex;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-sm);
   align-items: flex-start;
 }
 
 .team-avatar {
-  width: 80px;
-  height: 80px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--color-border);
@@ -40,21 +40,57 @@
 }
 
 .team-name {
-  font-size: 1.25rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   margin: 0;
 }
 
 .team-title {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--color-text-muted);
   margin-top: 2px;
 }
 
 .team-ingress {
-  margin-top: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+  font-size: 0.875rem;
   color: var(--color-text-muted);
-  line-height: 1.7;
+  line-height: 1.5;
+}
+
+/* Meetings grid */
+.meetings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.meeting-card {
+  padding: var(--spacing-md);
+  background: var(--color-accent-bg, #f8f9fb);
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.meeting-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--color-text, #111);
+}
+
+.meeting-frequency {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary, #1e40af);
+}
+
+.meeting-card p {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted, #555);
+  line-height: 1.6;
+  margin: var(--spacing-sm) 0 0;
 }
 
 /* Sites grid */
@@ -93,6 +129,14 @@
 
   .about-page .toc-sidebar {
     display: none;
+  }
+
+  .team-section {
+    grid-template-columns: 1fr;
+  }
+
+  .meetings-grid {
+    grid-template-columns: 1fr;
   }
 
   .sites-grid {

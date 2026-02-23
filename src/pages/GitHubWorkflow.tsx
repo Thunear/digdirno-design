@@ -5,7 +5,103 @@ import "../styles/github-workflow.css";
 const tocItems = [
   { id: "flyten", label: "Flyten i boardet" },
   { id: "prioritering", label: "Prioritering av epics" },
-  { id: "finn-oss", label: "Finn oss på GitHub" },
+  { id: "labels", label: "Labels vi brukar" },
+];
+
+const labels = [
+  {
+    name: "accessibility",
+    description: "Forbetringar eller problem knytt til universell utforming.",
+  },
+  {
+    name: "admin",
+    description: "Oppgåver knytt til prosjektstyring eller administrasjon.",
+  },
+  {
+    name: "analytics",
+    description: "Arbeid som involverer data, målingar eller innsikt.",
+  },
+  { name: "bug", description: "Noko fungerer ikkje som det skal." },
+  {
+    name: "content",
+    description: "Innhaldsoppdateringar eller skriveoppdrag.",
+  },
+  { name: "feature", description: "Ny funksjonalitet eller eit nytt behov." },
+  {
+    name: "investigate",
+    description:
+      "Idear eller issues som treng nærare utforsking eller faktainnhenting før vi kan handle.",
+  },
+  {
+    name: "security",
+    description:
+      "Sårbarheiter, risikoar eller forbetringar knytt til tryggleik.",
+  },
+];
+
+const stageOptions = [
+  {
+    number: 1,
+    name: "Idé / behov",
+    color: "#86efac",
+    description:
+      "Behovet eller idéen er meldt inn i innboksen. Ikkje vurdert eller prioritert enno.",
+  },
+  {
+    number: 2,
+    name: "Definere / vurdere",
+    color: "#6ee7b7",
+    description:
+      "Oppgåva er under vurdering — vi kartlegg omfang, ansvar og om det skal handterast som task eller epic.",
+  },
+  {
+    number: 3,
+    name: "Innsikt / research",
+    color: "#5eead4",
+    description:
+      "Vi samlar data og snakkar med brukarar for å forstå behovet betre før vi bestemmer retning.",
+  },
+  {
+    number: 4,
+    name: "Konsept / skisse",
+    color: "#93c5fd",
+    description:
+      "Vi utforskar ulike løysingsforslag gjennom enkle skisser og konsept.",
+  },
+  {
+    number: 5,
+    name: "Prototype & test",
+    color: "#a5b4fc",
+    description:
+      "Vi testar konseptet med faktiske brukarar for å validere idear og avdekke svakheiter.",
+  },
+  {
+    number: 6,
+    name: "Design",
+    color: "#c4b5fd",
+    description:
+      "Det ferdige designet vert laga og gjort klart for utvikling, med alle detaljar og komponentar på plass.",
+  },
+  {
+    number: 7,
+    name: "Implementering / utvikling",
+    color: "#f0abfc",
+    description:
+      "Løysinga vert bygd i kode. Tett samarbeid mellom utvikling og design for å sikre kvalitet.",
+  },
+  {
+    number: 8,
+    name: "Produksjon / utrulling",
+    color: "#fda4af",
+    description: "Løysinga er sett i drift og tilgjengeleg for brukarane.",
+  },
+  {
+    number: 9,
+    name: "Evaluering & læring",
+    color: "#fdba74",
+    description:
+      "Vi måler effekten av løysinga og tek lærdom vidare til neste iterasjon.",
+  },
 ];
 
 const columns = [
@@ -133,7 +229,8 @@ export default function GitHubWorkflow() {
               Har du eit behov, ein idé eller funne ein feil?
             </p>
             <p className="github-cta-desc">
-              Meld det inn som eit issue i innboksen vår — enten det gjeld nye behov, forbetringsforslag eller bugs.
+              Meld det inn som eit issue i innboksen vår — enten det gjeld nye
+              behov, forbetringsforslag eller bugs.
             </p>
           </div>
           <a
@@ -377,6 +474,63 @@ export default function GitHubWorkflow() {
                 modellen.
               </li>
             </ul>
+          </div>
+        </section>
+
+        {/* Labels */}
+        <section className="page-section">
+          <h2 id="labels">Labels og felt vi brukar</h2>
+          <p>
+            Vi brukar labels for å kategorisere issues i boardet. Alle issues
+            bør ha minst éin relevant label.
+          </p>
+
+          <div className="label-list">
+            {labels.map((label) => (
+              <div key={label.name} className="label-row">
+                <span className="label-chip">{label.name}</span>
+                <span className="label-row-desc">{label.description}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Stage custom field */}
+        <section className="page-section">
+          <h3 id="stage">Stage-feltet</h3>
+          <p>
+            <strong>Stage</strong> er eit custom field i GitHub Projects som
+            fortel kvar i utviklingsprosessen eit issue eller ein epic befinn
+            seg. Det speglar dei ni stega i{" "}
+            <a href="/designfundament/utviklingsprosess">
+              utviklingsprosessen vår
+            </a>{" "}
+            og gjer det mogleg å filtrere og sortere boardet etter prosessfase,
+            uavhengig av kva kolonne oppgåva ligg i.
+          </p>
+
+          <div className="stage-list">
+            {stageOptions.map((stage) => (
+              <div
+                key={stage.number}
+                className="stage-item"
+                style={{
+                  backgroundColor: stage.color + "30",
+                  borderLeftColor: stage.color,
+                }}
+              >
+                <span
+                  className="stage-number"
+                  style={{ backgroundColor: stage.color, color: "#1e293b" }}
+                >
+                  {stage.number}
+                </span>
+                <div className="stage-info">
+                  <p className="stage-name">{stage.name}</p>
+                  <p className="stage-desc">{stage.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       </div>

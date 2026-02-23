@@ -4,7 +4,29 @@ import "../styles/about.css";
 
 const tocItems = [
   { id: "motet-teamet", label: "Møt teamet" },
+  { id: "moteseriar", label: "Møteseriar" },
   { id: "om-nettsidene", label: "Om nettsidene" },
+];
+
+const meetings = [
+  {
+    name: "Standup",
+    frequency: "Kvar måndag og onsdag",
+    description:
+      "Kort statusmøte der vi går gjennom kva vi jobbar med, eventuelle blokkerar og kva som er neste steg.",
+  },
+  {
+    name: "Retro",
+    frequency: "1 gong i månaden",
+    description:
+      "Vi ser tilbake på førre periode og diskuterer kva som fungerte bra, kva vi kan forbetre og kva vi tek med oss vidare.",
+  },
+  {
+    name: "Backlog grooming",
+    frequency: "2 gonger i månaden",
+    description:
+      "Vi går gjennom backloggen, vurderer nye behov, prioriterer og sikrar at oppgåvene er klare til å jobbast med.",
+  },
 ];
 
 const team = [
@@ -100,14 +122,32 @@ export default function About() {
                   className="team-avatar"
                   src={person.image}
                   alt={person.name}
-                  width="80"
-                  height="80"
+                  width="48"
+                  height="48"
                 />
                 <div className="team-info">
                   <h3 className="team-name">{person.name}</h3>
                   <span className="team-title">{person.title}</span>
                   <p className="team-ingress">{person.ingress}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="page-section">
+          <h2 id="moteseriar">Møteseriar</h2>
+          <p>
+            Vi har faste møteseriar for å halde teamet synkronisert og sikre
+            jamn framdrift.
+          </p>
+
+          <div className="meetings-grid">
+            {meetings.map((meeting) => (
+              <div key={meeting.name} className="meeting-card">
+                <h3>{meeting.name}</h3>
+                <span className="meeting-frequency">{meeting.frequency}</span>
+                <p>{meeting.description}</p>
               </div>
             ))}
           </div>
