@@ -31,26 +31,26 @@ const meetings = [
 
 const team = [
   {
+    name: "Wanda Smalsundmo",
+    title: "Produkteier",
+    image: "/images/authors/wanda.png",
+    ingress: "Meir informasjon vil komme her.",
+  },
+  {
+    name: "Marte Torsdatter Leland",
+    title: "Redaktør",
+    image: "/images/authors/marte.jpg",
+    ingress: "Meir informasjon vil komme her.",
+  },
+  {
     name: "Øyvind Thune",
     title: "Design Lead",
-    image: "/images/authors/user1.png",
+    image: "/images/authors/oyvind.png",
     ingress: "Meir informasjon vil komme her.",
   },
   {
-    name: "Vilde Ylvisåker",
-    title: "Grafisk Designer",
-    image: "/images/authors/user2.png",
-    ingress: "Meir informasjon vil komme her.",
-  },
-  {
-    name: "Namn kjem",
-    title: "Rolle kjem",
-    image: "/images/authors/user1.png",
-    ingress: "Meir informasjon vil komme her.",
-  },
-  {
-    name: "Namn kjem",
-    title: "Rolle kjem",
+    name: "Sture Dingsøyr",
+    title: "Tech Lead",
     image: "/images/authors/user1.png",
     ingress: "Meir informasjon vil komme her.",
   },
